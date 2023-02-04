@@ -1,0 +1,128 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "4260240ad8f0d33dd9bcff099f6c5ebe",
+    "entities": [
+      {
+        "tableName": "Parts",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`partID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT NOT NULL, `Description` TEXT NOT NULL, `Image` BLOB NOT NULL, `amount` INTEGER NOT NULL, `PartTypeID` INTEGER NOT NULL, `PartDrawerID` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "partID",
+            "columnName": "partID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Description",
+            "columnName": "Description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Image",
+            "columnName": "Image",
+            "affinity": "BLOB",
+            "notNull": true
+          },
+          {
+            "fieldPath": "amount",
+            "columnName": "amount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "PartTypeID",
+            "columnName": "PartTypeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "PartDrawerID",
+            "columnName": "PartDrawerID",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "partID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Types",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`typeID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Name` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "typeID",
+            "columnName": "typeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Name",
+            "columnName": "Name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "typeID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Drawer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`drawerID` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `Row` INTEGER NOT NULL, `Column` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "drawerID",
+            "columnName": "drawerID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Row",
+            "columnName": "Row",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "Column",
+            "columnName": "Column",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "drawerID"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4260240ad8f0d33dd9bcff099f6c5ebe')"
+    ]
+  }
+}
