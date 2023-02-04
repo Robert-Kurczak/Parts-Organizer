@@ -1,26 +1,22 @@
 package pl.edu.uwr.partsorganizer.view_controller
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.coroutines.launch
-import pl.edu.uwr.partsorganizer.R
-import pl.edu.uwr.partsorganizer.databinding.FragmentDrawerContentListBinding
+import pl.edu.uwr.partsorganizer.databinding.FragmentPartsListBinding
 import pl.edu.uwr.partsorganizer.model.*
-import pl.edu.uwr.partsorganizer.view_controller.adapters.DrawerContentAdapter
-import pl.edu.uwr.partsorganizer.view_controller.adapters.DrawerContentComparator
+import pl.edu.uwr.partsorganizer.view_controller.adapters.PartsAdapter
+import pl.edu.uwr.partsorganizer.view_controller.adapters.PartsComparator
 
-class DrawerContentFragment : Fragment(){
-    private lateinit var binding: FragmentDrawerContentListBinding
+class PartsFragment : Fragment(){
+    private lateinit var binding: FragmentPartsListBinding
 
-    private fun setupRecyclerView(drawerContentAdapter: DrawerContentAdapter){
+    private fun setupRecyclerView(partsAdapter: PartsAdapter){
         binding.drawerContentRecyclerView.apply {
-            adapter = drawerContentAdapter
+            adapter = partsAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
@@ -30,14 +26,14 @@ class DrawerContentFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDrawerContentListBinding.inflate(inflater, container, false)
+        binding = FragmentPartsListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = DrawerContentAdapter(DrawerContentComparator())
+        val adapter = PartsAdapter(PartsComparator())
         val drawerID = arguments?.getInt("drawerID")!!
         val database = DataProvider.getDatabase(view.context)
 
