@@ -16,7 +16,7 @@ object DataProvider{
                 "PartsDatabase"
             )
                 .allowMainThreadQueries()
-                .createFromAsset("database/PartsDatabase.db")
+                .createFromAsset("database/PartsDatabaseExample.db")
                 .build().also { INSTANCE = it }
 
             instance

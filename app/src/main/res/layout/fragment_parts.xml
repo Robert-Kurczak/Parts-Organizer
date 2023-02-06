@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    tools:context=".view_controller.PartsListFragment">
+    tools:context=".view_controller.DrawerContentFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,11 +17,11 @@
             android:adjustViewBounds="true"
             android:contentDescription="part_image"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/dip14" />
+            android:src="@drawable/ic_placeholder" />
 
 
         <LinearLayout
-                android:layout_width="230dp"
+                android:layout_width="210dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
             >
@@ -71,9 +71,28 @@
                 android:id="@+id/part_amount"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="numberDecimal"
                 android:text="1"
                 android:textSize="20sp"
                 android:gravity="center_horizontal"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/drawer_position_label"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Szufladka:"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:gravity="center_horizontal"
+                android:id="@+id/drawer_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4x5"
                 />
 
         </LinearLayout>

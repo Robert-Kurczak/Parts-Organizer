@@ -16,7 +16,7 @@ class MainViewHolder(
 ): RecyclerView.ViewHolder(binding.root){
 
     fun bind(item: Drawer){
-        val label = 4 * (item.Column - 1) + (item.Row - 1) + 1
+        val label = 4 * (item.Row - 1) + (item.Column - 1) + 1
         binding.drawerLabel.text = label.toString()
     }
 }

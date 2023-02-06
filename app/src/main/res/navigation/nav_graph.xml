@@ -13,15 +13,56 @@
         <action
             android:id="@+id/action_mainFragment_to_drawerContentFragment"
             app:destination="@id/drawerContentFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_searchedPartsFragment"
+            app:destination="@id/searchedPartsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addPartFragment"
+            app:destination="@id/addPartFragment" />
     </fragment>
     <fragment
         android:id="@+id/drawerContentFragment"
         android:name="pl.edu.uwr.partsorganizer.view_controller.DrawerContentFragment"
         android:label="fragment_drawer_content"
-        tools:layout="@layout/fragment_drawer_content" >
+        tools:layout="@layout/fragment_parts" >
         <argument
             android:name="drawerID"
             app:argType="integer"
             android:defaultValue="0" />
+        <action
+            android:id="@+id/action_drawerContentFragment_to_editPartFragment"
+            app:destination="@id/editPartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchedPartsFragment"
+        android:name="pl.edu.uwr.partsorganizer.view_controller.SearchedPartsFragment"
+        android:label="SearchedPartsFragment" >
+        <argument
+            android:name="searchName"
+            app:argType="string"
+            android:defaultValue='""' />
+        <action
+            android:id="@+id/action_searchedPartsFragment_to_editPartFragment"
+            app:destination="@id/editPartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPartFragment"
+        android:name="pl.edu.uwr.partsorganizer.view_controller.AddPartFragment"
+        android:label="AddPartFragment" >
+        <action
+            android:id="@+id/action_addPartFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editPartFragment"
+        android:name="pl.edu.uwr.partsorganizer.view_controller.EditPartFragment"
+        android:label="EditPartFragment" >
+        <argument
+            android:name="partID"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_editPartFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>

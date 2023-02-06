@@ -13,20 +13,20 @@ data class Drawer(
 
 @Entity(tableName = "Types")
 data class Types(
-    @PrimaryKey(autoGenerate = true) val typeID: Int,
+    @PrimaryKey(autoGenerate = true) var typeID: Int,
     @ColumnInfo val Name: String
 )
 
 @Entity(tableName = "Parts")
 data class PartsItem(
     @PrimaryKey(autoGenerate = true) val partID: Int,
-    @ColumnInfo val Name: String,
-    @ColumnInfo val Description: String,
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB) val Image: ByteArray,
-    @ColumnInfo val amount: Int,
+    @ColumnInfo var Name: String,
+    @ColumnInfo var Description: String,
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var Image: ByteArray,
+    @ColumnInfo var amount: Int,
 
     @ColumnInfo val PartTypeID: Int,
-    @ColumnInfo val PartDrawerID: Int,
+    @ColumnInfo var PartDrawerID: Int,
 )
 
 data class Parts(
@@ -57,8 +57,11 @@ interface DrawerDao{
 
 @Dao
 interface TypesDao{
+    @Query("SELECT * FROM Types")
+    fun selectAll(): List<Types>
+
     @Insert
-    suspend fun insertType(Type: Types)
+    fun insertType(Type: Types)
 }
 
 @Dao
@@ -71,8 +74,22 @@ interface PartsDao{
     @Query("SELECT * FROM Parts WHERE PartDrawerID = :drawerID")
     fun selectInDrawer(drawerID: Int): List<Parts>
 
+    @Transaction
+    @Query("SELECT * FROM Parts WHERE Name LIKE '%' || :searchName || '%'")
+    fun selectByName(searchName: String): List<Parts>
+
+    @Transaction
+    @Query("SELECT * FROM Parts WHERE partID = :ID")
+    fun selectByID(ID: Int): Parts
+
     @Insert
     suspend fun insertPart(part: PartsItem)
+
+    @Update
+    suspend fun updatePart(part: PartsItem)
+
+    @Delete
+    suspend fun deletePart(part: PartsItem)
 }
 //------
 
